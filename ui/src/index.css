@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html,
+#root {
+  height: 100%;
+}
+:root {
+  font-size: 14px;
+  /* color: white; */
+  font-family: "Open Sans", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: rgb(243 244 246);
+}
+
+.table-th {
+  @apply text-left;
+}
+.table-td {
+  @apply h-16;
+}
+
+.active {
+  color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* ROOT LAYOUT */
+.root-page {
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  grid-template-rows: 60px 1fr;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main";
+  transition: 0.2s;
+}
+
+.root-page > * {
+  transition: 0.2s;
+}
+.root-page .sidebar {
+  grid-area: sidebar;
+  position: fixed;
+  width: 270px;
+  height: 100%;
+  background-color: #22232C;
+}
+
+.root-page .header {
+  grid-area: header;
+  position: fixed;
+  left: 270px;
+  height: 60px;
+  width: 100%;
+}
+.root-page .main-view {
+  grid-area: main;
+}
+
+.dashboard-container {
+  max-width: 1440px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 230px) 1fr;
+  gap: 20px;
+}
+.dashboard-graph {
+  grid-area: 3 / 1 / 4 / 3;
+}
+.dashboard-card-1 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.dashboard-card-2 {
+  grid-area: 1 / 2 / 2 / 3;
+}
+.dashboard-card-3 {
+  grid-area: 1 / 3 / 2 / 4;
+}
+.dashboard-card-4 {
+  grid-area: 2 / 1 / 3 / 3;
+}
+.dashboard-card-5 {
+  grid-area: 2 / 3 / 3 / 4;
+}
+.dashboard-card-6 {
+  grid-area: 3 / 3 / 3 / 4;
+}
+
+.agents-view-container {
+  max-width: 1440px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 1fr;
+  /* gap:30px; */
+}
+.agents-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 30px;
+}
+.agent-card {
+  height: 180px;
+}
+
+/* END ROOT LAYOUT */
+
+/* ROOT LAYOUT MEDIA */
+@media (max-width: 1023px) {
+  .root-page {
+    grid-template-columns: 80px 1fr;
+  }
+  .root-page .sidebar {
+    width: 80px;
+  }
+  .root-page .header {
+    left: 80px;
+  }
+}
+@media (max-width: 1023px) {
+  .dashboard-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 230px) 400px;
+  }
+  .dashboard-card-1 {
+    grid-area: 1 / 1 / 1 / 4;
+  }
+  .dashboard-card-2 {
+    grid-area: 2 / 1 / 2 / 4;
+  }
+  .dashboard-card-3 {
+    grid-area: 3 / 1 / 3 / 4;
+  }
+  .dashboard-card-4 {
+    grid-area: 4 / 1 / 4 / 4;
+  }
+  .dashboard-card-5 {
+    grid-area: 5 / 1 / 5 / 4;
+  }
+  .dashboard-card-6 {
+    grid-area: 6 / 1 / 6 / 4;
+  }
+  .dashboard-graph {
+    grid-area: 7 / 1 / 7 / 4;
+    border: 1px solid blue;
+  }
+}
+/* END LAYOUT MEDIA */
+
+/* ANIMATIONS */
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes appear2 {
+  0% {
+    opacity: 0.1;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes colorize {
+  0% {
+    opacity: 0.5;
+    height: 0px;
+  }
+  100% {
+    opacity: 1;
+    height: 100%;
+  }
+}
+
+@keyframes heartbeat {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+/* ANIMATIONS END */
